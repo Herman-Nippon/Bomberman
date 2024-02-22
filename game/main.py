@@ -30,7 +30,7 @@ class GameLoop:
         pass
 
     def draw(self):
-        self.background.draw()
+        self.background.draw(self.screen)
         self.map.draw(self.screen)
 
         # Show the changes
