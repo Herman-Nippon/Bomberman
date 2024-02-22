@@ -5,22 +5,27 @@
   * x,y
   * speed
   * skin
-  * Rect
+  * hitbox
   * life = 3
 
 * Player (Creature)
   * bomb_count
 
-* Block
-  * x
-  * y
-  * Rect
+* TileType(Enum)
+  * BORDER, GRASS, DESTRUCTIBLE = 0, 1, 2
+
+* Tile
+  * x, y
   * Type (GRASS, BORDER, DESTRUCTIBLE = 0, 1, 2)
+  * hitbox
+  * image
 
 * Map 
-  * map_width = 21 
-  * map_height = 15 
+  * map_width
+  * map_height 
   * tiles_map list[Block]
+  * horizontal_offset (for now)
+  * vertical_offset (for now)
 
 * keyboardInput
   * def keyEvent()
@@ -31,7 +36,7 @@
 
 * Bomb
   * x,y
-  * Rect
+  * hitbox
   * power
   * timer
  
