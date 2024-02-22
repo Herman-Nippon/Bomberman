@@ -4,7 +4,7 @@ from player import Player
 
 
 def readKeyboard(player: Player):
-    print(player.x, player.y)
+    #print(player.x, player.y)
 
         # Проверка когда клавиша нажимается
     keys = py.key.get_pressed() # возвращает словарь с нажатыми клавишами и их состояниями, нет Shift Ctrl Alt

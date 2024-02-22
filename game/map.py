@@ -57,4 +57,4 @@ class Map:
         for line in self.tiles_map:
             for tile in line:
                 tile.draw(screen)
-                #sdfsadfasfdasd
+
