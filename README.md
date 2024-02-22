@@ -27,7 +27,7 @@
 
 * Menu
   * start -> main loop
-  * exit
+  * exit -> close game
 
 * Bomb
   * x,y
