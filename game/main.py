@@ -1,4 +1,5 @@
 import pygame
+import os
 
 from game.creatures.npc import Npc
 from game.creatures.player import Player
@@ -25,9 +26,9 @@ class GameLoop:
 
         self.running = False
 
-        self.player1 = Player(140, 48, pygame.image.load("../assets/Player/player_bomberman.png"), 1)
-        self.player2 = Player(300, 300, pygame.image.load("../assets/Player/player_bomberman.png"), 1)
-        self.npc1 = Npc(500, 500, pygame.image.load("../assets/Player/apple_npc.png"))
+        self.player1 = Player(140, 48, pygame.image.load(os.getcwd() + "\\..\\assets\\Player\\player_bomberman.png"), 1)
+        self.player2 = Player(300, 300, pygame.image.load(os.getcwd() + "\\..\\assets\\Player\\player_bomberman.png"), 1)
+        self.npc1 = Npc(500, 500, pygame.image.load(os.getcwd() + "\\..\\assets\\Player\\apple_npc.png"))
 
     def handle_events(self):
         for event in pygame.event.get():
@@ -47,15 +48,18 @@ class GameLoop:
         #             print("Collision with border")
         #         if self.player1.hitbox.collidepoint(tile.x, tile.y) and tile.type == TileType.GRASS:
         #             print("Collision with grass tile!")
-        print(self.npc1.check_collision(self.player1))
-        pygame.display.update()
+        # print(self.npc1.check_collision(self.player1))
+        pass
 
     def draw(self):
         self.background.draw(self.screen)
         self.map.draw(self.screen)
 
+        self.player1.draw(self.screen)
+        self.player2.draw(self.screen)
+        self.npc1.draw(self.screen)
         # Show the changes
-        # pygame.display.flip()
+        pygame.display.update()
 
     def run(self):
         self.running = True
@@ -63,9 +67,6 @@ class GameLoop:
         while self.running:
             self.handle_events()
             self.draw()
-            self.player1.draw(self.screen)
-            self.player2.draw(self.screen)
-            self.npc1.draw(self.screen)
             read_keyboard(self.player1)
             self.update()
             self.clock.tick(60)

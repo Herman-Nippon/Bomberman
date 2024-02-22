@@ -1,6 +1,6 @@
 import pygame
 
-from сreature import Creature
+from game.creatures.сreature import Creature
 
 
 class Npc(Creature):
