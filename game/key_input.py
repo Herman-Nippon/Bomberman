@@ -1,14 +1,10 @@
 import pygame as py
 
-from Bomberman.game.Player import Player
+from Player import Player
 
 
 def readKeyboard(player: Player):
     print(player.x, player.y)
-    for event in py.event.get():
-        if event.type == py.QUIT:
-            py.quit()
-            quit()
 
         # Проверка когда клавиша нажимается
     keys = py.key.get_pressed() # возвращает словарь с нажатыми клавишами и их состояниями, нет Shift Ctrl Alt

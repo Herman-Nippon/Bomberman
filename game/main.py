@@ -1,7 +1,7 @@
 import pygame
 
-from Bomberman.game.Player import Player
-from Bomberman.game.keyInput import readKeyboard
+from Player import Player
+from key_input import readKeyboard
 from background import Background
 from map import Map
 
@@ -37,7 +37,7 @@ class GameLoop:
         self.map.draw(self.screen)
 
         # Show the changes
-        pygame.display.flip()
+        #pygame.display.flip()
 
     def run(self):
         self.running = True

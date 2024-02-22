@@ -1,4 +1,4 @@
-import Creature
+import сreature
 
 import pygame as py
 import pygame
