@@ -31,7 +31,7 @@ class GameLoop:
 
     def draw(self):
         self.background.draw()
-        self.map.draw()
+        self.map.draw(self.screen)
 
         # Show the changes
         pygame.display.flip()
