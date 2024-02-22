@@ -1,11 +1,10 @@
 import pygame
 
-from npc import Npc
-from tile import TileType
-from player import Player
-from key_input import readKeyboard
-from background import Background
-from map import Map
+from game.creatures.npc import Npc
+from game.creatures.player import Player
+from game.inputs.key_input import readKeyboard
+from game.map.background import Background
+from game.map.map import Map
 
 
 class GameLoop:
@@ -27,8 +26,9 @@ class GameLoop:
         self.running = False
 
         self.player1 = Player(140, 48, pygame.image.load("../assets/Player/player_bomberman.png"), 1)
-        self.player2 = Player(300, 300, pygame.image.load("../assets/Player/player_bomberman.png"),1)
+        self.player2 = Player(300, 300, pygame.image.load("../assets/Player/player_bomberman.png"), 1)
         self.npc1 = Npc(500, 500, pygame.image.load("../assets/Player/apple_npc.png"))
+
     def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -55,7 +55,7 @@ class GameLoop:
         self.map.draw(self.screen)
 
         # Show the changes
-        #pygame.display.flip()
+        # pygame.display.flip()
 
     def run(self):
         self.running = True

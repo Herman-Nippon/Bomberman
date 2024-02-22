@@ -1,6 +1,6 @@
 import pygame as py
 
-from player import Player
+from game.creatures.player import Player
 
 
 def readKeyboard(player: Player):

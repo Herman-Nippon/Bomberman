@@ -1,13 +1,13 @@
 import pygame
 from random import randint
-from tile import Tile, TileType
+from game.map.tile import Tile, TileType
 
 
 class Map:
     def __init__(self, screen: pygame.Surface):
-        self.grass_image = pygame.image.load("../assets/Map/grass.png").convert()
-        self.border_image = pygame.image.load("../assets/Map/border_final.png").convert()
-        self.destructible_image = pygame.image.load("../assets/Map/destructible.png").convert()
+        self.grass_image = pygame.image.load("../../assets/Map/grass.png").convert()
+        self.border_image = pygame.image.load("../../assets/Map/border_final.png").convert()
+        self.destructible_image = pygame.image.load("../../assets/Map/destructible.png").convert()
 
         self.grass_image = pygame.transform.scale(self.grass_image, (48, 48))
         self.border_image = pygame.transform.scale(self.border_image, (48, 48))
