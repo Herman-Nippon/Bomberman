@@ -1,4 +1,6 @@
 import pygame
+
+from Bomberman.game.Player import Player
 from background import Background
 from map import Map
 
@@ -38,10 +40,14 @@ class GameLoop:
 
     def run(self):
         self.running = True
+        player = Player(100, 100, pygame.image.load("../assets/Player/player_bomberman.png"), 1)
         while self.running:
             self.handle_events()
-            self.update()
             self.draw()
+            player.draw(self.screen)
+
+
+            self.update()
             self.clock.tick(60)
 
         pygame.quit()
@@ -49,4 +55,4 @@ class GameLoop:
 
 if __name__ == "__main__":
     game = GameLoop()
-    game.run()
+    game.run()  # main loop
