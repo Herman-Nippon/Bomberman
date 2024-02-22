@@ -1,6 +1,7 @@
 import pygame
 
 from Bomberman.game.Player import Player
+from Bomberman.game.keyInput import readKeyboard
 from background import Background
 from map import Map
 
@@ -29,7 +30,7 @@ class GameLoop:
                 self.running = False
 
     def update(self):
-        pass
+        pygame.display.update()
 
     def draw(self):
         self.background.draw(self.screen)
@@ -41,12 +42,12 @@ class GameLoop:
     def run(self):
         self.running = True
         player = Player(100, 100, pygame.image.load("../assets/Player/player_bomberman.png"), 1)
+
         while self.running:
             self.handle_events()
             self.draw()
             player.draw(self.screen)
-
-
+            readKeyboard(player)
             self.update()
             self.clock.tick(60)
 
