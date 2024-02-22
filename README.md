@@ -23,7 +23,7 @@
 * Map 
   * map_width
   * map_height 
-  * tiles_map list[Block]
+  * tiles_map list[Tile]
   * horizontal_offset (for now)
   * vertical_offset (for now)
 
