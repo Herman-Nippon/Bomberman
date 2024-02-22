@@ -2,8 +2,7 @@ import pygame
 
 
 class Background:
-    def __init__(self, screen: pygame.Surface, screen_width: int, screen_height: int):
-        self.screen = screen
+    def __init__(self, screen_width: int, screen_height: int):
 
         self.tile_image = pygame.image.load("../assets/Background/Blue.png").convert()
         self.tile_image = pygame.transform.scale(self.tile_image, (128, 128))
@@ -11,9 +10,9 @@ class Background:
         self.horizontal_tiles_num = (screen_width // self.tile_image.get_width()) + 1
         self.vertical_tiles_num = (screen_height // self.tile_image.get_height()) + 1
 
-    def draw(self):
+    def draw(self, screen: pygame.Surface):
         # Clear the screen
-        self.screen.fill((0, 0, 0))
+        screen.fill((0, 0, 0))
 
         # Draw the tiled background
         for x in range(self.horizontal_tiles_num):
@@ -22,4 +21,4 @@ class Background:
                 tile_y = y * self.tile_image.get_height()
 
                 # Draw the tile
-                self.screen.blit(self.tile_image, (tile_x, tile_y))
+                screen.blit(self.tile_image, (tile_x, tile_y))
