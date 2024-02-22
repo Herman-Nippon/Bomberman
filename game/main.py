@@ -1,4 +1,9 @@
 import pygame
+
+from npc import Npc
+from tile import TileType
+from player import Player
+from key_input import readKeyboard
 from background import Background
 from map import Map
 
@@ -21,27 +26,48 @@ class GameLoop:
 
         self.running = False
 
+        self.player1 = Player(140, 48, pygame.image.load("../assets/Player/player_bomberman.png"), 1)
+        self.player2 = Player(300, 300, pygame.image.load("../assets/Player/player_bomberman.png"),1)
+        self.npc1 = Npc(500, 500, pygame.image.load("../assets/Player/apple_npc.png"))
     def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
 
     def update(self):
-        pass
+        # if self.player1.hitbox.colliderect(self.player2.hitbox):
+        #     print("Hi friend")
+        # if self.player1.hitbox.colliderect(self.player2.hitbox.topleft, self.player2.hitbox.bottomright):
+        #     print("Hi friend")
+        # for line in self.map.tiles_map:
+        #     for tile in line:
+        #         if self.player1.hitbox.collidepoint(tile.x, tile.y) and tile.type == TileType.DESTRUCTIBLE:
+        #             print("Collision with destructible tile")
+        #         if self.player1.hitbox.collidepoint(tile.x, tile.y) and tile.type == TileType.BORDER:
+        #             print("Collision with border")
+        #         if self.player1.hitbox.collidepoint(tile.x, tile.y) and tile.type == TileType.GRASS:
+        #             print("Collision with grass tile!")
+        print(self.npc1.check_collision(self.player1))
+        pygame.display.update()
 
     def draw(self):
         self.background.draw(self.screen)
         self.map.draw(self.screen)
 
         # Show the changes
-        pygame.display.flip()
+        #pygame.display.flip()
 
     def run(self):
         self.running = True
+
         while self.running:
             self.handle_events()
-            self.update()
             self.draw()
+            self.player1.draw(self.screen)
+            self.player2.draw(self.screen)
+            self.npc1.draw(self.screen)
+            readKeyboard(self.player1)
+            self.update()
             self.clock.tick(60)
 
         pygame.quit()
@@ -49,4 +75,4 @@ class GameLoop:
 
 if __name__ == "__main__":
     game = GameLoop()
-    game.run()
+    game.run()  # main loop

@@ -45,27 +45,10 @@
 
 ![scheme.jpg](scheme.jpg)
 
-        # Проверка когда клавиша нажимается
-        elif event.type == py.KEYDOWN:
-            if event.key == py.K_LEFT:
-                #x -= 10
-                fl_left = True
-            elif event.key == py.K_RIGHT:
-                #x += 10
-                fl_right = True
-            elif event.key == py.K_UP:
-                #y -= 10
-                fl_up = True
-            elif event.key == py.K_DOWN:
-                #y += 10
-                fl_down = True
-        # Проверка когда клавиша отпускается
-        elif event.type == py.KEYUP:
-            if event.key == py.K_LEFT:
-                fl_left = False
-            elif event.key == py.K_RIGHT:
-                fl_right = False
-            elif event.key == py.K_UP:
-                fl_up = False
-            elif event.key == py.K_DOWN:
-                fl_down = False
+## todo
+* количество игроков 1-4 (игра на одной клавиатуре)
+* место спавна
+  * отдельный класс? механика
+  * png
+  * область генерации tile destruct около спавна
+* Ускоерение = Марио
