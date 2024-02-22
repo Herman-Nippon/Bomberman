@@ -27,15 +27,21 @@ class GameLoop:
         self.running = False
 
         self.player1 = Player(140, 48, pygame.image.load(os.getcwd() + "\\..\\assets\\Player\\player_bomberman.png"), 1)
-        self.player2 = Player(300, 300, pygame.image.load(os.getcwd() + "\\..\\assets\\Player\\player_bomberman.png"), 1)
-        self.npc1 = Npc(500, 500, pygame.image.load(os.getcwd() + "\\..\\assets\\Player\\apple_npc.png"))
+        # self.player2 = Player(300, 300, pygame.image.load(os.getcwd() + "\\..\\assets\\Player\\player_bomberman.png"),
+        #                       1)
+        # self.npc1 = Npc(500, 500, pygame.image.load(os.getcwd() + "\\..\\assets\\Player\\apple_npc.png"))
 
     def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
 
+        if read_keyboard(self.player1) == "exit":
+            self.running = False
+
     def update(self):
+        self.player1.check_collision_tile(self.map.tiles_map)
+
         # if self.player1.hitbox.colliderect(self.player2.hitbox):
         #     print("Hi friend")
         # if self.player1.hitbox.colliderect(self.player2.hitbox.topleft, self.player2.hitbox.bottomright):
@@ -56,8 +62,9 @@ class GameLoop:
         self.map.draw(self.screen)
 
         self.player1.draw(self.screen)
-        self.player2.draw(self.screen)
-        self.npc1.draw(self.screen)
+        # self.player2.draw(self.screen)
+        # self.npc1.draw(self.screen)
+
         # Show the changes
         pygame.display.update()
 
@@ -67,7 +74,6 @@ class GameLoop:
         while self.running:
             self.handle_events()
             self.draw()
-            read_keyboard(self.player1)
             self.update()
             self.clock.tick(60)
 
