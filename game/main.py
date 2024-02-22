@@ -1,6 +1,6 @@
 import pygame
 
-from Player import Player
+from player import Player
 from key_input import readKeyboard
 from background import Background
 from map import Map
