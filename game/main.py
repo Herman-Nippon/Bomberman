@@ -12,7 +12,7 @@ class GameLoop:
         self.screen = pygame.display.set_mode((screen_width, screen_height))
         pygame.display.set_caption("Bomberman")
 
-        self.background = Background(self.screen, screen_width, screen_height)
+        self.background = Background(screen_width, screen_height)
 
         self.map = Map(self.screen)
         self.map.create_map()
