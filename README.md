@@ -26,7 +26,7 @@
   * def keyEvent()
 
 * Menu
-  * start (main loop)
+  * start -> main loop
   * exit
 
 * Bomb
@@ -39,8 +39,6 @@
   * movement
 
 ![scheme.jpg](scheme.jpg)
-
-
 
         # Проверка когда клавиша нажимается
         elif event.type == py.KEYDOWN:
