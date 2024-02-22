@@ -2,7 +2,7 @@ import pygame
 
 from game.creatures.npc import Npc
 from game.creatures.player import Player
-from game.inputs.key_input import readKeyboard
+from game.inputs.key_input import read_keyboard
 from game.map.background import Background
 from game.map.map import Map
 
@@ -66,7 +66,7 @@ class GameLoop:
             self.player1.draw(self.screen)
             self.player2.draw(self.screen)
             self.npc1.draw(self.screen)
-            readKeyboard(self.player1)
+            read_keyboard(self.player1)
             self.update()
             self.clock.tick(60)
 
