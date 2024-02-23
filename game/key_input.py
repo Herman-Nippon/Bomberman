@@ -3,7 +3,7 @@ import pygame as py
 from player import Player
 
 
-def readKeyboard(player: Player):
+def readKeyboard(player: Player, player_controls: int):
     #print(player.x, player.y)
 
         # Проверка когда клавиша нажимается
@@ -11,15 +11,34 @@ def readKeyboard(player: Player):
     if keys[py.K_ESCAPE]:
         py.quit()
         quit()
+# For pale
+    if player_controls == 1:
+        if keys[py.K_LEFT]:
+            player.x -= player.speed
+        if keys[py.K_RIGHT]:
+            player.x += player.speed
+        if keys[py.K_UP]:
+            player.y -= player.speed
+        if keys[py.K_DOWN]:
+            player.y += player.speed
+        if keys[py.K_o]:
+            player.drop_bomb()
+        if keys[py.K_p]:
+            player.action()
 
-    if keys[py.K_LEFT]:
-        player.x -= player.speed
-    if keys[py.K_RIGHT]:
-        player.x += player.speed
-    if keys[py.K_UP]:
-        player.y -= player.speed
-    if keys[py.K_DOWN]:
-        player.y += player.speed
+    if player_controls ==2:
+        if keys[py.K_a]:
+            player.x -= player.speed
+        if keys[py.K_d]:
+            player.x += player.speed
+        if keys[py.K_w]:
+            player.y -= player.speed
+        if keys[py.K_s]:
+            player.y += player.speed
+        if keys[py.K_f]:
+            player.drop_bomb()
+        if keys[py.K_g]:
+            player.action()
 
 
 

@@ -29,6 +29,19 @@
 
 * keyboardInput
   * def keyEvent()
+---
+### Controls
+#### Player 1
+Arrows: UP, DOWN, LEFT , RIGHT
+Drop bomb: O
+Action: P
+
+#### Player 2
+Arrows: W, A, S , D
+Drop bomb: F
+Action: G
+
+---
 
 * Menu
   * start -> main loop

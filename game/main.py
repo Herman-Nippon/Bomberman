@@ -47,7 +47,8 @@ class GameLoop:
         #             print("Collision with border")
         #         if self.player1.hitbox.collidepoint(tile.x, tile.y) and tile.type == TileType.GRASS:
         #             print("Collision with grass tile!")
-        print(self.npc1.check_collision(self.player1))
+        #print(self.npc1.check_collision(self.player1))
+        self.player1.check_collision_tile(self.map.tiles_map)
         pygame.display.update()
 
     def draw(self):
@@ -66,7 +67,14 @@ class GameLoop:
             self.player1.draw(self.screen)
             self.player2.draw(self.screen)
             self.npc1.draw(self.screen)
-            readKeyboard(self.player1)
+            #todo: extract to method
+            for bomb in self.player1.bombs_list:
+                bomb.draw(self.screen)
+            for bomb in self.player2.bombs_list:
+                bomb.draw(self.screen)
+
+            readKeyboard(self.player1,1)
+            readKeyboard(self.player2,2)
             self.update()
             self.clock.tick(60)
 

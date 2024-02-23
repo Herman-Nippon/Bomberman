@@ -1,6 +1,7 @@
 import pygame
 
-from Bomberman.game.tile import TileType
+from bomb import Bomb
+from tile import TileType, Tile
 from сreature import Creature
 
 
@@ -13,6 +14,7 @@ class Player(Creature):
         self.image = image
         self.hitbox = pygame.Rect(x, y, image.get_width(), image.get_height())
         self.bomb_count = bomb_count
+        self.bombs_list = []
 
 
 
@@ -26,11 +28,25 @@ class Player(Creature):
     def check_collision(self, other):
         return self.hitbox.colliderect(other.hitbox)
 
-    # def check_collision_tile(self, tile):
-    #     if tile.type == TileType.BORDER:
-    #         print("Collision with border")
-    #     return self.hitbox.colliderect(tile.hitbox)
+    def check_collision_tile(self, tile_map: list[list[Tile]]):
+        for line in tile_map:
+            for tile in line:
+                if tile.type == TileType.BORDER:
+                    print("Collision border")
+                if tile.type == TileType.GRASS:
+                    print("Collision tile!")
+                if tile.type == TileType.DESTRUCTIBLE:
+                    print("Collision tile")
 
+    def drop_bomb(self):
+        self.bombs_list.append(Bomb(self.x, self.y, pygame.image.load("../assets/Bomb/Bomb32.png")))
+        self.bomb_count -= 1
+        print("Bomb count: ",self.bomb_count)
+
+
+
+    def action(self):
+        pass
 
 
 
