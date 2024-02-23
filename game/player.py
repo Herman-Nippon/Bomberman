@@ -1,5 +1,6 @@
 import pygame
 
+from npc import Npc
 from bomb import Bomb
 from tile import TileType, Tile
 from сreature import Creature
@@ -13,6 +14,7 @@ class Player(Creature):
         self.speed = 5
         self.image = image
         self.hitbox = pygame.Rect(x, y, image.get_width(), image.get_height())
+        self.rect = self.image.get_rect()
         self.bomb_count = bomb_count
         self.bombs_list = []
 
@@ -25,19 +27,35 @@ class Player(Creature):
         if self.hitbox.colliderect(player.hitbox):
             return True
 
-    def check_collision(self, other):
-        return self.hitbox.colliderect(other.hitbox)
+    def check_collision_npc(self, npc: Npc):
+        #if self.hitbox.colliderect(npc.hitbox):
+        if self.rect.colliderect(npc.rect):
+            print("npc collision")
+            self.life -= 1
+            print(self.life)
+            self.death()
+            if self.life > 0:
+                self.death()
+                #todo: spawn places for players
+                self.x = 140
+                self.y = 48
+
+
 
     def check_collision_tile(self, tile_map: list[list[Tile]]):
         for line in tile_map:
             for tile in line:
                 if tile.type == TileType.BORDER:
-                    print("Collision border")
+                    pass
+                    #print("Collision border")
                 if tile.type == TileType.GRASS:
-                    print("Collision tile!")
+                    pass
+                    #print("Collision grass")
                 if tile.type == TileType.DESTRUCTIBLE:
-                    print("Collision tile")
-
+                    pass
+                    #print("Collision destructible")
+    def can_move(self, dx, dy):
+        self.check_collision_tile(self.map.tiles_map)
     def drop_bomb(self):
         self.bombs_list.append(Bomb(self.x, self.y, pygame.image.load("../assets/Bomb/Bomb32.png")))
         self.bomb_count -= 1
@@ -46,6 +64,14 @@ class Player(Creature):
 
 
     def action(self):
+        pass
+
+    def death(self):
+        #todo: animation of death
+        pass
+
+    def gameover(self):
+        #todo: end game score, time, go to main menu
         pass
 
 

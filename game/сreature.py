@@ -7,6 +7,7 @@ class Creature:
         self.y = y
         self.speed = 5
         self.image = image
+        self.rect = self.image.get_rect()
         self.life = 3
         self.hitbox = pygame.Rect(x, y, image.get_width(), image.get_height())
 

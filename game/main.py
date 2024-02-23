@@ -49,14 +49,25 @@ class GameLoop:
         #             print("Collision with grass tile!")
         #print(self.npc1.check_collision(self.player1))
         self.player1.check_collision_tile(self.map.tiles_map)
+        self.player2.check_collision_tile(self.map.tiles_map)
+        #todo npc list
+
+        self.player1.check_collision_npc(self.npc1)
+        self.player2.check_collision_npc(self.npc1)
+
+
+
+        #test revers collision
+        if self.npc1.check_collision(self.player1):
+            #todo animation for npc bite
+            pass
+            #print("npc bite player1")
         pygame.display.update()
 
     def draw(self):
         self.background.draw(self.screen)
         self.map.draw(self.screen)
 
-        # Show the changes
-        #pygame.display.flip()
 
     def run(self):
         self.running = True
@@ -64,17 +75,23 @@ class GameLoop:
         while self.running:
             self.handle_events()
             self.draw()
+
+            #draw players
             self.player1.draw(self.screen)
             self.player2.draw(self.screen)
             self.npc1.draw(self.screen)
+
+            #draw bombs
             #todo: extract to method
             for bomb in self.player1.bombs_list:
                 bomb.draw(self.screen)
             for bomb in self.player2.bombs_list:
                 bomb.draw(self.screen)
 
+            #read keyboard
             readKeyboard(self.player1,1)
             readKeyboard(self.player2,2)
+
             self.update()
             self.clock.tick(60)
 

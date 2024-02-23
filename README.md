@@ -31,6 +31,7 @@
   * def keyEvent()
 ---
 ### Controls
+Exit game: ESC 
 #### Player 1
 Arrows: UP, DOWN, LEFT , RIGHT
 Drop bomb: O
