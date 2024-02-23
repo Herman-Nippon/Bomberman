@@ -9,8 +9,8 @@ class Npc(Creature):
 
 
     def draw(self, screen):
-        screen.blit(self.image, (self.x, self.y))
+        screen.blit(self.image, self.rect)
 
     def check_collision(self, other: Creature):
-        return self.hitbox.collidepoint(other.x, other.y)
+        return self.rect.collidepoint(other.x, other.y)
 

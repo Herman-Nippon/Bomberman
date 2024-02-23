@@ -9,31 +9,27 @@ from сreature import Creature
 class Player(Creature):
     def __init__(self, x: int, y: int, image: pygame.Surface, bomb_count: int):
         super().__init__(x,y,image)
-        self.x=x
-        self.y=y
-        self.speed = 5
-        self.image = image
-        self.hitbox = pygame.Rect(x, y, image.get_width(), image.get_height())
-        self.rect = self.image.get_rect()
         self.bomb_count = bomb_count
         self.bombs_list = []
 
 
-
     def draw(self, screen):
-        screen.blit(self.image, (self.x, self.y))
+        screen.blit(self.image, self.rect)
 
-    def is_collided_with(self, player: Creature):
-        if self.hitbox.colliderect(player.hitbox):
+    def is_collided_with(self, creature: Creature):
+        if self.rect.colliderect(creature.rect):
             return True
+        return False
 
     def check_collision_npc(self, npc: Npc):
         #if self.hitbox.colliderect(npc.hitbox):
         if self.rect.colliderect(npc.rect):
             print("npc collision")
-            self.life -= 1
-            print(self.life)
             self.death()
+            self.damage(1)
+            print(self.life)
+            self.rect.x=140
+            self.rect.y=48
             if self.life > 0:
                 self.death()
                 #todo: spawn places for players
@@ -57,7 +53,7 @@ class Player(Creature):
     def can_move(self, dx, dy):
         self.check_collision_tile(self.map.tiles_map)
     def drop_bomb(self):
-        self.bombs_list.append(Bomb(self.x, self.y, pygame.image.load("../assets/Bomb/Bomb32.png")))
+        self.bombs_list.append(Bomb(self.rect.x, self.rect.y, pygame.image.load("../assets/Bomb/Bomb32.png")))
         self.bomb_count -= 1
         print("Bomb count: ",self.bomb_count)
 

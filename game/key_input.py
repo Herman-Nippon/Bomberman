@@ -14,13 +14,13 @@ def readKeyboard(player: Player, player_controls: int):
 # For pale
     if player_controls == 1:
         if keys[py.K_LEFT]:
-            player.x -= player.speed
+            player.rect.x -= player.speed
         if keys[py.K_RIGHT]:
-            player.x += player.speed
+            player.rect.x += player.speed
         if keys[py.K_UP]:
-            player.y -= player.speed
+            player.rect.y -= player.speed
         if keys[py.K_DOWN]:
-            player.y += player.speed
+            player.rect.y += player.speed
         if keys[py.K_o]:
             player.drop_bomb()
         if keys[py.K_p]:
@@ -28,13 +28,13 @@ def readKeyboard(player: Player, player_controls: int):
 
     if player_controls ==2:
         if keys[py.K_a]:
-            player.x -= player.speed
+            player.rect.x -= player.speed
         if keys[py.K_d]:
-            player.x += player.speed
+            player.rect.x += player.speed
         if keys[py.K_w]:
-            player.y -= player.speed
+            player.rect.y -= player.speed
         if keys[py.K_s]:
-            player.y += player.speed
+            player.rect.y += player.speed
         if keys[py.K_f]:
             player.drop_bomb()
         if keys[py.K_g]:

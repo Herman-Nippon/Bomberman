@@ -35,25 +35,23 @@ class GameLoop:
                 self.running = False
 
     def update(self):
-        # if self.player1.hitbox.colliderect(self.player2.hitbox):
-        #     print("Hi friend")
-        # if self.player1.hitbox.colliderect(self.player2.hitbox.topleft, self.player2.hitbox.bottomright):
-        #     print("Hi friend")
-        # for line in self.map.tiles_map:
-        #     for tile in line:
-        #         if self.player1.hitbox.collidepoint(tile.x, tile.y) and tile.type == TileType.DESTRUCTIBLE:
-        #             print("Collision with destructible tile")
-        #         if self.player1.hitbox.collidepoint(tile.x, tile.y) and tile.type == TileType.BORDER:
-        #             print("Collision with border")
-        #         if self.player1.hitbox.collidepoint(tile.x, tile.y) and tile.type == TileType.GRASS:
-        #             print("Collision with grass tile!")
-        #print(self.npc1.check_collision(self.player1))
+
         self.player1.check_collision_tile(self.map.tiles_map)
         self.player2.check_collision_tile(self.map.tiles_map)
-        #todo npc list
 
         self.player1.check_collision_npc(self.npc1)
         self.player2.check_collision_npc(self.npc1)
+
+        if self.player1.is_collided_with(self.npc1):
+            print("p1 collision npc")
+        if self.player2.is_collided_with(self.npc1):
+            print("p2 collision npc")
+        if self.player1.is_collided_with(self.player2):
+            print("p1 collision p2")
+        if self.player2.is_collided_with(self.player1):
+            print("p2 collision p1")
+        #todo npc list
+
 
 
 
