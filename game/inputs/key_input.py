@@ -1,6 +1,7 @@
 import pygame as py
 
 from game.creatures.player import Player
+SPEED = 1
 
 
 def read_keyboard(player: Player):
@@ -11,14 +12,10 @@ def read_keyboard(player: Player):
         return "exit"
 
     if keys[py.K_LEFT]:
-        player.x -= player.speed
-        player.update()
+        player.move(-SPEED, 0)
     if keys[py.K_RIGHT]:
-        player.x += player.speed
-        player.update()
+        player.move(SPEED, 0)
     if keys[py.K_UP]:
-        player.y -= player.speed
-        player.update()
+        player.move(0, -SPEED)
     if keys[py.K_DOWN]:
-        player.y += player.speed
-        player.update()
+        player.move(0, SPEED)

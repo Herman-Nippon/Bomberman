@@ -26,7 +26,8 @@ class GameLoop:
 
         self.running = False
 
-        self.player1 = Player(140, 48, pygame.image.load(os.getcwd() + "\\..\\assets\\Player\\player_bomberman.png"), 1)
+        self.player1 = Player(self.map.tiles_map[1][1].x, self.map.tiles_map[1][1].y, pygame.image.load(os.getcwd() + "\\..\\assets\\Player\\player_bomberman.png"), 1,
+                              self.map.tile_size, self.map.tiles_map)
         # self.player2 = Player(300, 300, pygame.image.load(os.getcwd() + "\\..\\assets\\Player\\player_bomberman.png"),
         #                       1)
         # self.npc1 = Npc(500, 500, pygame.image.load(os.getcwd() + "\\..\\assets\\Player\\apple_npc.png"))
@@ -40,21 +41,8 @@ class GameLoop:
             self.running = False
 
     def update(self):
+        self.player1.update_hitbox()
         self.player1.check_collision_tile(self.map.tiles_map)
-
-        # if self.player1.hitbox.colliderect(self.player2.hitbox):
-        #     print("Hi friend")
-        # if self.player1.hitbox.colliderect(self.player2.hitbox.topleft, self.player2.hitbox.bottomright):
-        #     print("Hi friend")
-        # for line in self.map.tiles_map:
-        #     for tile in line:
-        #         if self.player1.hitbox.collidepoint(tile.x, tile.y) and tile.type == TileType.DESTRUCTIBLE:
-        #             print("Collision with destructible tile")
-        #         if self.player1.hitbox.collidepoint(tile.x, tile.y) and tile.type == TileType.BORDER:
-        #             print("Collision with border")
-        #         if self.player1.hitbox.collidepoint(tile.x, tile.y) and tile.type == TileType.GRASS:
-        #             print("Collision with grass tile!")
-        # print(self.npc1.check_collision(self.player1))
         pass
 
     def draw(self):

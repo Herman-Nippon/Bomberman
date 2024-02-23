@@ -16,8 +16,9 @@ class Tile:
 
         self.image = image
 
-        self.hitbox = pygame.Rect(x, y, image.get_width(), image.get_height())
+        self.tile_size = image.get_width()
+
+        self.hitbox = pygame.Rect(x, y, self.tile_size, self.tile_size)
 
     def draw(self, screen: pygame.Surface):
         screen.blit(self.image, (self.x, self.y))
-#         miscellaneous
