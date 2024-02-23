@@ -12,7 +12,9 @@ class Creature:
         self.rect.x = self.x
         self.rect.y = self.y
         self.life = 3
-        # self.hitbox = pygame.Rect(self.x, self.y, image.get_width(), image.get_height())
+        self.spawn_x = x
+        self.spawn_y = y
+
 
     def draw(self, screen: pygame.Surface):
         screen.blit(self.image, (self.x, self.y))

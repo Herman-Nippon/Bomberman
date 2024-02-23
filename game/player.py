@@ -22,19 +22,16 @@ class Player(Creature):
         return False
 
     def check_collision_npc(self, npc: Npc):
-        #if self.hitbox.colliderect(npc.hitbox):
         if self.rect.colliderect(npc.rect):
             print("npc collision")
-            self.death()
             self.damage(1)
             print(self.life)
-            self.rect.x=140
-            self.rect.y=48
             if self.life > 0:
-                self.death()
                 #todo: spawn places for players
-                self.x = 140
-                self.y = 48
+                self.rect.x = self.spawn_x
+                self.rect.y = self.spawn_y
+            else:
+                self.death()
 
 
 
@@ -55,6 +52,9 @@ class Player(Creature):
     def drop_bomb(self):
         self.bombs_list.append(Bomb(self.rect.x, self.rect.y, pygame.image.load("../assets/Bomb/Bomb32.png")))
         self.bomb_count -= 1
+        #todo: add sound
+        #todo: add animation
+        #todo: add timer: timeout to next drop
         print("Bomb count: ",self.bomb_count)
 
 
@@ -63,7 +63,8 @@ class Player(Creature):
         pass
 
     def death(self):
-        #todo: animation of death
+        self.speed = 0
+        self.image = pygame.image.load("../assets/Player/death32.png")
         pass
 
     def gameover(self):

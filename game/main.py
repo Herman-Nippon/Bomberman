@@ -26,8 +26,8 @@ class GameLoop:
 
         self.running = False
 
-        self.player1 = Player(140, 48, pygame.image.load("../assets/Player/player_bomberman.png"), 1)
-        self.player2 = Player(300, 300, pygame.image.load("../assets/Player/player_bomberman.png"),1)
+        self.player1 = Player(148, 90, pygame.image.load("../assets/Player/player_bomberman.png"), 1)
+        self.player2 = Player(1000, 665, pygame.image.load("../assets/Player/player_bomberman.png"),1)
         self.npc1 = Npc(500, 500, pygame.image.load("../assets/Player/apple_npc.png"))
     def handle_events(self):
         for event in pygame.event.get():
